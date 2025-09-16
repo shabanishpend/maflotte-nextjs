@@ -24,7 +24,7 @@ async function fetchApi<T = unknown>(
     credentials,
   } = options;
 
-  let fetchOptions: RequestInit = {
+  const fetchRequestOptions: RequestInit = {
     method,
     headers: {
       "Content-Type": "application/json",
@@ -35,32 +35,33 @@ async function fetchApi<T = unknown>(
   };
 
   if (body !== undefined && method !== "GET") {
-    fetchOptions.body = JSON.stringify(body);
+    fetchRequestOptions.body = JSON.stringify(body);
   }
 
   try {
-    const response = await fetch(url, fetchOptions);
+    const response = await fetch(url, fetchRequestOptions);
     const contentType = response.headers.get("content-type");
-    let data: T | null = null;
+    let responseData: T | null = null;
 
     if (contentType && contentType.includes("application/json")) {
-      data = await response.json();
+      responseData = await response.json();
     } else {
-      data = (await response.text()) as T;
+      responseData = (await response.text()) as T;
     }
 
     if (!response.ok) {
       return {
         data: null,
-        error: data && typeof data === "object" && "message" in data
-          ? (data as { message: string }).message
-          : response.statusText,
+        error:
+          responseData && typeof responseData === "object" && "message" in responseData
+            ? (responseData as { message: string }).message
+            : response.statusText,
         status: response.status,
       };
     }
 
     return {
-      data,
+      data: responseData,
       error: null,
       status: response.status,
     };
