@@ -165,7 +165,7 @@ export default function Contact({ content }: { content: ContactContent }) {
     setIsSubmitting(true);
 
     try {
-      const response = await fetchApi<{ status: boolean }>('https://maflotte.ch/api/contact/send', {
+      const response = await fetchApi<{ status: boolean }>('https://admin.maflotte.ch/api/contact/send', {
         method: 'POST',
         body: {
           name: formData.name,

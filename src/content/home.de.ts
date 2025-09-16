@@ -15,7 +15,7 @@ export const homeDE = {
       "Maflotte digitalisiert Ihre Fuhrparkverwaltung: weniger Admin, mehr Überblick – in Echtzeit und überall.",
     ctaPrimary: { label: "Demo anfragen", href: "#contact" }, // gleiche Anker-IDs
     ctaSecondary: { label: "Funktionen ansehen", href: "#services" },
-    videoSrc: "https://maflotte.ch/website/videos/geo_loc.mp4",
+    videoSrc: "https://admin.maflotte.ch/website/videos/geo_loc.mp4",
   } satisfies HeroContent,
 
   // ======================== SECTION FONCTIONNALITÉS ===========================
@@ -116,7 +116,7 @@ export const homeDE = {
     slides: [
       {
         type: "video",
-        src: "https://maflotte.ch/website/videos/sensor_tag.mp4",
+        src: "https://admin.maflotte.ch/website/videos/sensor_tag.mp4",
         poster: "/photos/eye-sensor-side.png",
         alt: "Lkw-Erkennung per Antenne auf der Autobahn",
         title: "Echtzeit-Erkennung auf der Strecke",
@@ -236,7 +236,7 @@ export const homeDE = {
     title: "Das bietet Maflotte",
     subtitle:
       "Vereinfachen Sie Ihr Flottenmanagement mit einer klaren, leistungsstarken Komplettlösung.",
-    videoSrc: "https://maflotte.ch/website/videos/about-section.mp4",
+    videoSrc: "https://admin.maflotte.ch/website/videos/about-section.mp4",
     items: [
       {
         title: "Echtzeit-Tracking",

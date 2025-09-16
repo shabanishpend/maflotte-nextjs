@@ -15,7 +15,7 @@ export const homeFR = {
       "Une solution digitale complète pour suivre, contrôler et optimiser votre flotte de véhicules où que vous soyez.",
     ctaPrimary: { label: "Demander une démo", href: "#contact" }, // ancre
     ctaSecondary: { label: "Voir les fonctionnalités", href: "#services" },
-    videoSrc: "https://maflotte.ch/website/videos/geo_loc.mp4",
+    videoSrc: "https://admin.maflotte.ch/website/videos/geo_loc.mp4",
   } satisfies HeroContent,
 
   // ============================ FEATURES SECTION ==============================
@@ -107,7 +107,7 @@ export const homeFR = {
     title: "Supervisez vos marchandises en temps réel",
     subtitle:
       "Des caméras connectées pour visualiser vos trajets, analyser les événements et sécuriser votre flotte.",
-    videoSrcMp4: "https://maflotte.ch/website/videos/camera_camion.mp4",
+    videoSrcMp4: "https://admin.maflotte.ch/website/videos/camera_camion.mp4",
     height: "md",
     showCTA: false, // pas de CTA pour l’instant (sinon cf. note plus bas)
   },
@@ -117,7 +117,7 @@ export const homeFR = {
     slides: [
       {
         type: "video",
-        src: "https://maflotte.ch/website/videos/sensor_tag.mp4",
+        src: "https://admin.maflotte.ch/website/videos/sensor_tag.mp4",
         poster: "/photos/eye-sensor-side.png",
         alt: "Camion détecté par antenne sur autoroute",
         title: "Détection en temps réel sur la route",
@@ -237,7 +237,7 @@ export const homeFR = {
     title: "Ce que vous offre MAFLOTTE",
     subtitle:
       "Simplifiez la gestion de vos véhicules avec une solution complète, claire et puissante.",
-    videoSrc: "https://maflotte.ch/website/videos/about-section.mp4",
+    videoSrc: "https://admin.maflotte.ch/website/videos/about-section.mp4",
     items: [
       {
         title: "Suivi en temps réel",
