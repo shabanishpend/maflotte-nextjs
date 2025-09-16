@@ -299,8 +299,25 @@ export const homeFR = {
         message: "Message",
       },
       submitLabel: "Envoyer",
+      submittingLabel: "Envoi en cours...",
       successMsg: "Merci ! Nous revenons vers vous rapidement.",
       errorMsg: "Une erreur est survenue. Veuillez réessayer.",
+      validation: {
+        nameRequired: "Le nom est requis",
+        emailRequired: "L'email est requis",
+        emailInvalid: "Veuillez entrer une adresse email valide",
+        messageRequired: "Le message est requis",
+      },
+      modal: {
+        success: {
+          title: "Envoi Réussi !",
+          message: "Votre message a été envoyé avec succès. Nous vous répondrons dès que possible. Merci de nous avoir contactés !"
+        },
+        error: {
+          title: "L'envoi a Échoué",
+          message: "Malheureusement, nous n'avons pas pu recevoir votre message en raison d'un problème technique. Veuillez essayer de nouveau plus tard ou nous contacter directement par e-mail ou téléphone."
+        }
+      }
     },
     map: { lat: 46.22425, lng: 6.05705, title: "GVA Group SA", zoom: 15 },
   } satisfies ContactContent,

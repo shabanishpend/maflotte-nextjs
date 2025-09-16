@@ -298,8 +298,25 @@ export const homeDE = {
         message: "Nachricht",
       },
       submitLabel: "Senden",
+      submittingLabel: "Wird gesendet...",
       successMsg: "Danke! Wir melden uns zeitnah.",
       errorMsg: "Es ist ein Fehler aufgetreten. Bitte erneut versuchen.",
+      validation: {
+        nameRequired: "Name ist erforderlich",
+        emailRequired: "E-Mail ist erforderlich",
+        emailInvalid: "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+        messageRequired: "Nachricht ist erforderlich",
+      },
+      modal: {
+        success: {
+          title: "Senden Erfolgreich!",
+          message: "Ihre Nachricht wurde erfolgreich gesendet. Wir werden uns so schnell wie möglich bei Ihnen melden. Vielen Dank, dass Sie uns kontaktiert haben!"
+        },
+        error: {
+          title: "Senden Fehlgeschlagen",
+          message: "Leider konnten wir Ihre Nachricht aufgrund eines technischen Problems nicht empfangen. Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns direkt per E-Mail oder Telefon."
+        }
+      }
     },
     map: { lat: 46.22425, lng: 6.05705, title: "GVA Group SA", zoom: 15 },
   } satisfies ContactContent,
