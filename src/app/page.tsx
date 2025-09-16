@@ -25,7 +25,7 @@ export default function Home() {
       <CameraSection
       {...homeFR.cameraSection}
         height="md"     
-        videoSrcMp4="/videos/camera_camion.mp4"
+        videoSrcMp4="https://maflotte.ch/website/videos/camera_camion.mp4"
         className="pb-12 md:pb-16"
       />
       <Sensor content={homeFR.sensor} />
