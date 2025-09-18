@@ -23,7 +23,7 @@ export default function HomeDE() {
       <CameraSection
         title={homeDE.cameraSection.title}
         videoSrcMp4={homeDE.cameraSection.videoSrcMp4}
-        height={homeDE.cameraSection.height}
+        height={homeDE.cameraSection.height as "md" | "sm" | "lg" | undefined}
         tabs={homeDE.cameraSection.tabs}
         imageTitles={homeDE.cameraSection.imageTitles}
       />

@@ -23,7 +23,7 @@ export default function Home() {
       <CameraSection
         title={homeFR.cameraSection.title}
         videoSrcMp4={homeFR.cameraSection.videoSrcMp4}
-        height={homeFR.cameraSection.height}
+        height={homeFR.cameraSection.height as "md" | "sm" | "lg" | undefined}
         tabs={homeFR.cameraSection.tabs}
         imageTitles={homeFR.cameraSection.imageTitles}
         className="pb-12 md:pb-16"
