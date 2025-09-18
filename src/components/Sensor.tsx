@@ -2,7 +2,6 @@
 
 import { useRef, useEffect, useState } from "react";
 
-/** === Types compatibles avec tes fichiers home.fr.ts / home.de.ts === */
 export type SensorSlide = {
   type: "video" | "image";
   src: string;
@@ -10,11 +9,20 @@ export type SensorSlide = {
   alt: string;
   title: string;
   text: string;
+  bullets?: string[];
 };
 
 export type SensorContent = {
-  slides: SensorSlide[]; // on garde exactement la même forme (FR/DE)
+  slides: SensorSlide[];
 };
+
+const carouselImages = [
+  "/photos/eye-beacon-side.png",
+  "/photos/eye-beacon-side-yellow.png",
+  "/photos/eye-sensor-side.png",
+  "/photos/eye-sensor-side-white.png",
+  "/photos/eye-sensor-side-yellow.png",
+];
 
 /**
  * Sensor (version “deux blocs media ↔ texte”, sans carrousel)
@@ -25,6 +33,7 @@ export type SensorContent = {
 export default function Sensor({ content }: { content: SensorContent }) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
+  const [carouselIdx, setCarouselIdx] = useState(0);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -35,7 +44,14 @@ export default function Sensor({ content }: { content: SensorContent }) {
     return () => obs.disconnect();
   }, []);
 
-  // Sécurité : si pas de contenu, on ne rend rien
+  // Carousel autoplay
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCarouselIdx((prev) => (prev + 1) % carouselImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, []);
+
   if (!content?.slides || content.slides.length === 0) return null;
 
   return (
@@ -46,13 +62,11 @@ export default function Sensor({ content }: { content: SensorContent }) {
         }`}
       >
         {content.slides.map((slide, idx) => {
-          // Alternance : pair => texte à gauche, impair => texte à droite
-          const textLeft = idx % 2 === 0; // 0,2,4... texte à gauche
+          const textLeft = idx % 2 === 0;
           return (
             <div key={idx} className="mb-12 md:mb-16">
               <div
                 className={`grid grid-cols-1 md:grid-cols-2 items-center gap-10 md:gap-12 ${
-                  // si texte à droite, on inverse les colonnes sur desktop
                   !textLeft
                     ? "md:[&>div:first-child]:order-2 md:[&>div:last-child]:order-1"
                     : ""
@@ -66,10 +80,17 @@ export default function Sensor({ content }: { content: SensorContent }) {
                   <p className="mt-4 text-base md:text-lg leading-7 text-slate-600 max-w-prose">
                     {slide.text}
                   </p>
+                  {slide.bullets && (
+                    <ul className="mt-4 list-disc pl-6 text-base md:text-lg text-slate-700 space-y-2">
+                      {slide.bullets.map((bullet, i) => (
+                        <li key={i}>{bullet}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
 
                 {/* Colonne Média */}
-                <div className="relative aspect-[16/9] md:aspect-[5/4] rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative aspect-[16/9] md:aspect-[5/4] rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center bg-white">
                   {slide.type === "video" ? (
                     <video
                       src={slide.src}
@@ -79,6 +100,13 @@ export default function Sensor({ content }: { content: SensorContent }) {
                       loop
                       playsInline
                       className="w-full h-full object-cover"
+                    />
+                  ) : idx === 1 ? (
+                    <img
+                      src={carouselImages[carouselIdx]}
+                      alt={slide.alt}
+                      className="w-auto h-full max-h-[320px] object-contain transition-all duration-500"
+                      loading="lazy"
                     />
                   ) : (
                     <img

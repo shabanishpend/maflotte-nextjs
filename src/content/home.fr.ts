@@ -104,12 +104,61 @@ export const homeFR = {
 
   // ============================= CAMERA SECTION ===============================
   cameraSection: {
-    title: "Supervisez vos marchandises en temps réel",
-    subtitle:
-      "Des caméras connectées pour visualiser vos trajets, analyser les événements et sécuriser votre flotte.",
+    title: "Gardez vos véhicules sous contrôle et sécurisez vos marchandises",
     videoSrcMp4: "https://admin.maflotte.ch/website/videos/camera_camion.mp4",
     height: "md",
-    showCTA: false, // pas de CTA pour l’instant (sinon cf. note plus bas)
+    showCTA: false,
+    tabs: [
+      {
+        title: "Caméras embarquées intelligentes",
+        text: `Offrez à votre flotte une sécurité optimale grâce à nos caméras embarquées nouvelle génération.
+Installées à l’intérieur comme à l’extérieur des véhicules, elles assurent une surveillance complète en temps réel.`,
+      },
+      {
+        title: "Caméras extérieures",
+        text: `Vision 360° pour prévenir les accidents, protéger vos marchandises et sécuriser vos trajets.`,
+        bullets: [
+          "Surveillance complète en temps réel",
+          "Protection des marchandises",
+          "Sécurité optimale",
+        ],
+      },
+      {
+        title: "Dashcam avancée",
+        text: `Enregistrement vidéo continu pour analyser les trajets, fournir des preuves en cas d’incident et renforcer la transparence.`,
+        bullets: [
+          "Analyse des trajets",
+          "Preuves en cas d’incident",
+          "Transparence renforcée",
+        ],
+      },
+      {
+        title: "Détection de fatigue et de distraction",
+        text: `Grâce à l’intelligence artificielle, nos caméras surveillent l’état du conducteur, alertent en cas de somnolence ou d’inattention et contribuent à réduire considérablement les risques d’accident.`,
+        bullets: [
+          "Surveillance de la vigilance du conducteur",
+          "Alertes en cas de somnolence",
+          "Réduction des risques d’accident",
+        ],
+      },
+      {
+        title: "Suivi en temps réel",
+        text: `Connectées à votre système de gestion, elles offrent une visibilité instantanée sur chaque véhicule.`,
+        bullets: [
+          "Connexion au système de gestion",
+          "Visibilité instantanée",
+          "Suivi de chaque véhicule",
+        ],
+      },
+    ],
+    imageTitles: [
+      "Mini caméra de vision en cabine",
+      "Caméra dôme",
+      "Caméra AHD vue de face",
+      "Caméra AHD à vue latérale",
+      "Caméra de recul AHD Starlight",
+      "Caméra AHD grand angle intelligente",
+    ],
   },
 
   // ============================== SENSOR SECTION ==============================
@@ -120,15 +169,31 @@ export const homeFR = {
         src: "https://admin.maflotte.ch/website/videos/sensor_tag.mp4",
         poster: "/photos/eye-sensor-side.png",
         alt: "Camion détecté par antenne sur autoroute",
-        title: "Détection en temps réel sur la route",
-        text: "Nos routeurs embarqués détectent automatiquement les tags Bluetooth à proximité lors des trajets. Visualisez en direct la position de vos véhicules et la présence de vos équipements, même hors contact GPS.",
+        title: "Routeurs nouvelle génération avec capteurs TAG",
+        text: `Suivez vos biens en toute simplicité grâce à nos routeurs intelligents.
+Conçus pour fonctionner sans dépendre du GPS, ils utilisent la technologie TAG intégrée pour détecter automatiquement la présence et la position de vos outils, véhicules ou accessoires à proximité.
+
+👉 Fini les installations compliquées et les zones blanches GPS : vos équipements sont identifiés en temps réel, sans effort.`,
+        bullets: [
+          "Détection instantanée – chaque outil équipé d’un capteur TAG est reconnu immédiatement.",
+          "Suivi sans GPS – idéal dans les entrepôts, garages, tunnels ou chantiers.",
+          "Sécurité accrue – réduisez les pertes et retrouvez vos biens en un clin d’œil.",
+          "Installation facile – nos routeurs s’intègrent rapidement et assurent une surveillance continue 24/7.",
+        ],
       },
       {
         type: "image",
         src: "/photos/eye-sensor-side.png",
         alt: "Capteur Bluetooth Maflotte",
-        title: "Le capteur Bluetooth intelligent",
-        text: "Ce tag compact permet de localiser vos biens, de surveiller température, humidité, mouvement et état magnétique. Il s’intègre facilement à tous vos véhicules et équipements.",
+        title: "Capteurs Bluetooth EYE avec Teltonika Telematics",
+        text: `Avec les capteurs Bluetooth EYE – Eye Beacon et Eye Sensor – vous gardez vos véhicules, outils et marchandises sous contrôle, même sans GPS.
+L’Eye Beacon agit comme une balise unique pour identifier et localiser vos biens à proximité, tandis que l’Eye Sensor ajoute des données précieuses comme la température, l’humidité, le mouvement ou l’inclinaison.`,
+        bullets: [
+          "Suivi intelligent et fiable en temps réel",
+          "Données enrichies : température, humidité, mouvement, inclinaison",
+          "Intégration facile dans vos routeurs et systèmes",
+          "Technologie simple, efficace et prête à sécuriser vos opérations 24/7",
+        ],
       },
     ],
   } satisfies SensorContent,
@@ -142,91 +207,67 @@ export const homeFR = {
         title: "Un gain de temps considérable",
         href: "#",
         description:
-          "Grâce à MAFLOTTE, nous avons pu centraliser tous nos véhicules, y compris ceux en location courte durée. La gestion est fluide et nous gagnons un temps précieux au quotidien.",
+          "Nous avons centralisé tous nos véhicules, même ceux en location courte durée. La gestion est plus simple et nous gagnons du temps chaque jour.",
         date: "Mai 2025",
         datetime: "2025-05-01",
         category: { title: "GVA CARS", href: "#" },
-        author: {
-          name: "Nicolas Berisha",
-          role: "Directeur Général",
-          href: "#",
-          imageUrl: "https://randomuser.me/api/portraits/men/32.jpg",
-        },
+        author: { name: "", role: "", href: "#", imageUrl: "" },
+        companyName: "Entreprise location",
       },
       {
         title: "Une solution claire et efficace",
         href: "#",
         description:
-          "Nous gérons une trentaine de véhicules utilitaires, et MAFLOTTE nous a permis d’y voir beaucoup plus clair. Les rappels automatiques et les rapports sont top.",
+          "La plateforme nous apporte une vraie transparence sur notre flotte. Les rappels automatiques et les rapports facilitent le suivi de nos utilitaires.",
         date: "Avril 2025",
         datetime: "2025-04-01",
         category: { title: "TransLog Suisse", href: "#" },
-        author: {
-          name: "Claire Dupuis",
-          role: "Responsable logistique",
-          href: "#",
-          imageUrl: "https://randomuser.me/api/portraits/women/45.jpg",
-        },
+        author: { name: "", role: "", href: "#", imageUrl: "" },
+        companyName: "TransLog Suisse",
       },
       {
         title: "Idéal pour une PME comme la nôtre",
         href: "#",
         description:
-          "Interface simple, support réactif, prix honnête. On recommande MAFLOTTE à toutes les entreprises locales qui veulent digitaliser leur gestion de flotte.",
+          "Interface intuitive, support réactif et prix honnête. MAFLOTTE nous aide à digitaliser la gestion de notre flotte sans prise de tête.",
         date: "Mars 2025",
         datetime: "2025-03-01",
         category: { title: "Electricité Favre SA", href: "#" },
-        author: {
-          name: "Yvan Favre",
-          role: "Co-gérant",
-          href: "#",
-          imageUrl: "https://randomuser.me/api/portraits/men/55.jpg",
-        },
+        author: { name: "", role: "", href: "#", imageUrl: "" },
+        companyName: "Electricité Favre",
       },
       {
         title: "Adapté à tous nos véhicules",
         href: "#",
         description:
-          "Qu’il s’agisse de nos camionnettes, de nos véhicules de chantier ou même des scooters de livraison, tout est intégré dans une seule interface. Super pratique.",
+          "Tous nos véhicules sont suivis sur une seule interface, qu’il s’agisse de camionnettes, d’engins de chantier ou de scooters. Très pratique au quotidien.",
         date: "Février 2025",
         datetime: "2025-02-01",
         category: { title: "Servibat Genève", href: "#" },
-        author: {
-          name: "Laura Perret",
-          role: "Responsable d’exploitation",
-          href: "#",
-          imageUrl: "https://randomuser.me/api/portraits/women/30.jpg",
-        },
+        author: { name: "", role: "", href: "#", imageUrl: "" },
+        companyName: "Servibat Genève",
       },
       {
         title: "Un onboarding rapide et intuitif",
         href: "#",
         description:
-          "Nous avons mis en place la solution en moins d’une semaine. Même nos chauffeurs trouvent l’interface facile à utiliser sur mobile.",
+          "La mise en place a été rapide et l’interface est facile à prendre en main, même pour nos chauffeurs sur mobile.",
         date: "Janvier 2025",
         datetime: "2025-01-01",
         category: { title: "TransAlp Distribution", href: "#" },
-        author: {
-          name: "Julien Martin",
-          role: "Chef de flotte",
-          href: "#",
-          imageUrl: "https://randomuser.me/api/portraits/men/41.jpg",
-        },
+        author: { name: "", role: "", href: "#", imageUrl: "" },
+        companyName: "TransAlp Distribution",
       },
       {
         title: "La meilleure plateforme qu’on ait testée",
         href: "#",
         description:
-          "On a essayé plusieurs outils avant de tomber sur MAFLOTTE. Le rapport qualité-prix et la stabilité de la plateforme font la différence.",
+          "Après plusieurs essais, MAFLOTTE s’est démarquée par sa stabilité et son rapport qualité-prix. Nous sommes très satisfaits.",
         date: "Décembre 2024",
         datetime: "2024-12-01",
         category: { title: "AlpiCar Service", href: "#" },
-        author: {
-          name: "Sophie Blanc",
-          role: "Assistante administrative",
-          href: "#",
-          imageUrl: "https://randomuser.me/api/portraits/women/22.jpg",
-        },
+        author: { name: "", role: "", href: "#", imageUrl: "" },
+        companyName: "AlpiCar Service",
       },
     ],
   } satisfies ReferencesContent,
@@ -310,14 +351,14 @@ export const homeFR = {
       },
       modal: {
         success: {
-          title: "Envoi Réussi !",
-          message: "Votre message a été envoyé avec succès. Nous vous répondrons dès que possible. Merci de nous avoir contactés !"
+          title: "Message envoyé avec succès",
+          message: "Merci ! Nous revenons vers vous rapidement.",
         },
         error: {
-          title: "L'envoi a Échoué",
-          message: "Malheureusement, nous n'avons pas pu recevoir votre message en raison d'un problème technique. Veuillez essayer de nouveau plus tard ou nous contacter directement par e-mail ou téléphone."
-        }
-      }
+          title: "Erreur lors de l'envoi",
+          message: "Une erreur est survenue. Veuillez réessayer.",
+        },
+      },
     },
     map: { lat: 46.22425, lng: 6.05705, title: "GVA Group SA", zoom: 15 },
   } satisfies ContactContent,

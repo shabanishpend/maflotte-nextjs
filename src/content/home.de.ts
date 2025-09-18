@@ -101,14 +101,61 @@ export const homeDE = {
 
   // ============================== SECTION CAMÉRA ==============================
   cameraSection: {
-    title: "Ladungen in Echtzeit im Blick behalten",
-    subtitle:
-      "Vernetzte Kameras für Fahrten, Ereignisanalysen und mehr Sicherheit für Ihre Flotte.",
-    videoSrcMp4: "/videos/camera_camion.mp4",
-    // videoSrcWebm: "/videos/camera_camion.webm",
-    // posterSrc: "/images/camera_poster.jpg",
+    title: "Behalten Sie Ihre Fahrzeuge und Ladungen unter Kontrolle",
+    videoSrcMp4: "https://admin.maflotte.ch/videos/camera_camion.mp4",
     height: "md",
     showCTA: false,
+    tabs: [
+      {
+        title: "Intelligente Bordkameras",
+        text: `Bieten Sie Ihrer Flotte maximale Sicherheit mit unseren modernen Bordkameras.
+Innen und außen installiert, sorgen sie für eine lückenlose Echtzeitüberwachung.`,
+      },
+      {
+        title: "Außenkameras",
+        text: `360°-Rundumsicht zur Unfallprävention, zum Schutz Ihrer Ladung und für sichere Fahrten.`,
+        bullets: [
+          "Lückenlose Echtzeitüberwachung",
+          "Schutz der Ladung",
+          "Optimale Sicherheit",
+        ],
+      },
+      {
+        title: "Fortschrittliche Dashcam",
+        text: `Kontinuierliche Videoaufzeichnung zur Analyse der Fahrten, als Beweis im Schadensfall und für mehr Transparenz.`,
+        bullets: [
+          "Fahrtenanalyse",
+          "Beweise im Schadensfall",
+          "Mehr Transparenz",
+        ],
+      },
+      {
+        title: "Müdigkeits- und Ablenkungserkennung",
+        text: `Dank künstlicher Intelligenz überwachen unsere Kameras den Zustand des Fahrers, warnen bei Schläfrigkeit oder Unaufmerksamkeit und senken das Unfallrisiko deutlich.`,
+        bullets: [
+          "Überwachung der Fahreraufmerksamkeit",
+          "Warnungen bei Schläfrigkeit",
+          "Reduziertes Unfallrisiko",
+        ],
+      },
+      {
+        title: "Echtzeit-Tracking",
+        text: `Verbunden mit Ihrem Flottenmanagementsystem bieten sie sofortige Sichtbarkeit für jedes Fahrzeug.`,
+        bullets: [
+          "Verbindung zum Managementsystem",
+          "Sofortige Sichtbarkeit",
+          "Tracking jedes Fahrzeugs",
+        ],
+      },
+    ],
+    imageTitles: [
+      "Mini-Kabinenkamera",
+      "Kuppelkamera",
+      "AHD-Frontkamera",
+      "AHD-Seitenkamera",
+      "AHD-Rückfahrkamera Starlight",
+      "Intelligente AHD-Weitwinkelkamera",
+    ],
   },
 
   // ========================= SECTION CAPTEUR BLUETOOTH ========================
@@ -116,18 +163,34 @@ export const homeDE = {
     slides: [
       {
         type: "video",
-        src: "https://admin.maflotte.ch/website/videos/sensor_tag.mp4",
+        src: "https://admin.maflotte.ch/videos/sensor_tag.mp4",
         poster: "/photos/eye-sensor-side.png",
         alt: "Lkw-Erkennung per Antenne auf der Autobahn",
-        title: "Echtzeit-Erkennung auf der Strecke",
-        text: "Unsere Bordrouter erkennen unterwegs automatisch nahe Bluetooth-Tags. Verfolgen Sie live die Position Ihrer Fahrzeuge und die Präsenz Ihrer Ausrüstung – auch ohne GPS-Kontakt.",
+        title: "Router der neuen Generation mit TAG-Sensoren",
+        text: `Verfolgen Sie Ihre Güter ganz einfach mit unseren intelligenten Routern.
+Sie funktionieren unabhängig vom GPS und nutzen integrierte TAG-Technologie, um automatisch die Anwesenheit und Position Ihrer Werkzeuge, Fahrzeuge oder Zubehörteile in der Nähe zu erkennen.
+
+👉 Schluss mit komplizierten Installationen und GPS-Funklöchern: Ihre Ausrüstung wird mühelos in Echtzeit identifiziert.`,
+        bullets: [
+          "Sofortige Erkennung – jedes Werkzeug mit TAG-Sensor wird direkt erkannt.",
+          "Tracking ohne GPS – ideal für Lager, Garagen, Tunnel oder Baustellen.",
+          "Mehr Sicherheit – Verluste minimieren und Ihre Güter im Handumdrehen wiederfinden.",
+          "Einfache Installation – unsere Router sind schnell integriert und sorgen für eine kontinuierliche 24/7-Überwachung.",
+        ],
       },
       {
         type: "image",
         src: "/photos/eye-sensor-side.png",
         alt: "Maflotte Bluetooth-Sensor",
-        title: "Der smarte Bluetooth-Tag",
-        text: "Kompakter Tag zur Lokalisierung von Gütern sowie Überwachung von Temperatur, Feuchtigkeit, Bewegung und Magnetzustand. Einfach in Fahrzeuge und Geräte integrierbar.",
+        title: "EYE Bluetooth-Sensoren mit Teltonika Telematics",
+        text: `Mit den EYE Bluetooth-Sensoren – Eye Beacon und Eye Sensor – behalten Sie Fahrzeuge, Werkzeuge und Waren auch ohne GPS im Blick.
+Der Eye Beacon dient als eindeutige Kennung zur Identifikation und Lokalisierung Ihrer Güter in der Nähe, während der Eye Sensor wertvolle Daten wie Temperatur, Feuchtigkeit, Bewegung oder Neigung liefert.`,
+        bullets: [
+          "Intelligentes und zuverlässiges Echtzeit-Tracking",
+          "Erweiterte Daten : Temperatur, Feuchtigkeit, Bewegung, Neigung",
+          "Einfache Integration in Ihre Router und Systeme",
+          "Einfache, effiziente Technologie für den 24/7-Schutz Ihrer Abläufe",
+        ],
       },
     ],
   } satisfies SensorContent,
@@ -140,92 +203,62 @@ export const homeDE = {
       {
         title: "Deutliche Zeitersparnis",
         href: "#",
-        description:
-          "Mit Maflotte konnten wir alle Fahrzeuge zentralisieren – auch Kurzzeitmieten. Die Verwaltung ist flüssig und wir sparen täglich wertvolle Zeit.",
+        description: "Wir haben alle Fahrzeuge zentralisiert, auch Kurzzeitmieten. Die Verwaltung ist einfacher und wir sparen jeden Tag Zeit.",
         date: "Mai 2025",
         datetime: "2025-05-01",
         category: { title: "GVA CARS", href: "#" },
-        author: {
-          name: "Nicolas Berisha",
-          role: "Geschäftsführer",
-          href: "#",
-          imageUrl: "https://randomuser.me/api/portraits/men/32.jpg",
-        },
+        author: { name: "", role: "", href: "#", imageUrl: "" },
+        companyName: "Entreprise location",
       },
       {
         title: "Klar und effizient",
         href: "#",
-        description:
-          "Wir verwalten rund 30 Nutzfahrzeuge, und Maflotte verschafft uns endlich Transparenz. Automatische Erinnerungen und Reports sind top.",
+        description: "Die Plattform bringt echte Transparenz in unseren Fuhrpark. Automatische Erinnerungen und Berichte erleichtern die Verwaltung unserer Nutzfahrzeuge.",
         date: "April 2025",
         datetime: "2025-04-01",
         category: { title: "TransLog Schweiz", href: "#" },
-        author: {
-          name: "Claire Dupuis",
-          role: "Leiterin Logistik",
-          href: "#",
-          imageUrl: "https://randomuser.me/api/portraits/women/45.jpg",
-        },
+        author: { name: "", role: "", href: "#", imageUrl: "" },
+        companyName: "TransLog Suisse",
       },
       {
         title: "Ideal für unser KMU",
         href: "#",
-        description:
-          "Einfache Oberfläche, reaktiver Support, fairer Preis. Wir empfehlen Maflotte allen lokalen Unternehmen, die ihr Flottenmanagement digitalisieren wollen.",
+        description: "Intuitive Oberfläche, schneller Support und fairer Preis. Maflotte hilft uns, das Flottenmanagement einfach zu digitalisieren.",
         date: "März 2025",
         datetime: "2025-03-01",
         category: { title: "Electricité Favre SA", href: "#" },
-        author: {
-          name: "Yvan Favre",
-          role: "Mitinhaber",
-          href: "#",
-          imageUrl: "https://randomuser.me/api/portraits/men/55.jpg",
-        },
+        author: { name: "", role: "", href: "#", imageUrl: "" },
+        companyName: "Electricité Favre",
       },
       {
         title: "Für alle unsere Fahrzeuge geeignet",
         href: "#",
-        description:
-          "Ob Lieferwagen, Baumaschinen oder sogar Lieferroller – alles in einer einzigen Oberfläche integriert. Sehr praktisch.",
+        description: "Alle Fahrzeuge werden auf einer Oberfläche verfolgt – Lieferwagen, Baumaschinen oder Roller. Sehr praktisch im Alltag.",
         date: "Februar 2025",
         datetime: "2025-02-01",
         category: { title: "Servibat Genf", href: "#" },
-        author: {
-          name: "Laura Perret",
-          role: "Betriebsleiterin",
-          href: "#",
-          imageUrl: "https://randomuser.me/api/portraits/women/30.jpg",
-        },
+        author: { name: "", role: "", href: "#", imageUrl: "" },
+        companyName: "Servibat Genève",
       },
       {
         title: "Schnelles, intuitives Onboarding",
         href: "#",
-        description:
-          "Wir haben die Lösung in weniger als einer Woche eingeführt. Selbst unsere Fahrer finden die mobile Oberfläche einfach zu bedienen.",
+        description: "Die Einführung war schnell und die Oberfläche ist auch für unsere Fahrer auf dem Handy leicht zu bedienen.",
         date: "Januar 2025",
         datetime: "2025-01-01",
         category: { title: "TransAlp Distribution", href: "#" },
-        author: {
-          name: "Julien Martin",
-          role: "Fuhrparkleiter",
-          href: "#",
-          imageUrl: "https://randomuser.me/api/portraits/men/41.jpg",
-        },
+        author: { name: "", role: "", href: "#", imageUrl: "" },
+        companyName: "TransAlp Distribution",
       },
       {
         title: "Die beste Plattform, die wir getestet haben",
         href: "#",
-        description:
-          "Wir haben mehrere Tools ausprobiert. Preis-Leistung und Stabilität der Plattform machen den Unterschied.",
+        description: "Nach mehreren Tests überzeugt Maflotte durch Stabilität und gutes Preis-Leistungs-Verhältnis. Wir sind sehr zufrieden.",
         date: "Dezember 2024",
         datetime: "2024-12-01",
         category: { title: "AlpiCar Service", href: "#" },
-        author: {
-          name: "Sophie Blanc",
-          role: "Teamassistenz",
-          href: "#",
-          imageUrl: "https://randomuser.me/api/portraits/women/22.jpg",
-        },
+        author: { name: "", role: "", href: "#", imageUrl: "" },
+        companyName: "AlpiCar Service",
       },
     ],
   } satisfies ReferencesContent,
@@ -236,7 +269,7 @@ export const homeDE = {
     title: "Das bietet Maflotte",
     subtitle:
       "Vereinfachen Sie Ihr Flottenmanagement mit einer klaren, leistungsstarken Komplettlösung.",
-    videoSrc: "https://admin.maflotte.ch/website/videos/about-section.mp4",
+    videoSrc: "https://admin.maflotte.ch/videos/about-section.mp4",
     items: [
       {
         title: "Echtzeit-Tracking",
@@ -309,14 +342,14 @@ export const homeDE = {
       },
       modal: {
         success: {
-          title: "Senden Erfolgreich!",
-          message: "Ihre Nachricht wurde erfolgreich gesendet. Wir werden uns so schnell wie möglich bei Ihnen melden. Vielen Dank, dass Sie uns kontaktiert haben!"
+          title: "Nachricht erfolgreich gesendet",
+          message: "Danke! Wir melden uns zeitnah.",
         },
         error: {
-          title: "Senden Fehlgeschlagen",
-          message: "Leider konnten wir Ihre Nachricht aufgrund eines technischen Problems nicht empfangen. Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns direkt per E-Mail oder Telefon."
-        }
-      }
+          title: "Fehler beim Senden",
+          message: "Es ist ein Fehler aufgetreten. Bitte erneut versuchen.",
+        },
+      },
     },
     map: { lat: 46.22425, lng: 6.05705, title: "GVA Group SA", zoom: 15 },
   } satisfies ContactContent,

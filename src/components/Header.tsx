@@ -6,19 +6,27 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { FiLogIn } from "react-icons/fi";
+import { FiLogIn, FiChevronDown } from "react-icons/fi";
 
 // ========================== Types des props ==========================
-export type NavItem = { href: string; label: string };
+export type NavItem = {
+  href: string;
+  label: string;
+  dropdown?: { href: string; label: string }[];
+};
 export type HeaderContent = {
   logoAlt: string;
-  locale: "fr" | "de";
-  nav: NavItem[];
+  locale: "fr" | "de" | "en";
+  nav: Array<{
+    href: string;
+    label: string;
+    dropdown?: { href: string; label: string }[];
+  }>;
   login: { label: string; href: string };
 };
 
 type HeaderProps = {
-  basePath?: "" | "/de";
+  basePath?: string;
   content: HeaderContent;
 };
 
@@ -26,6 +34,9 @@ type HeaderProps = {
 export default function Header({ basePath = "", content }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [solutionsMobileOpen, setSolutionsMobileOpen] = useState(false);
+  const solutionsTimeout = useState<NodeJS.Timeout | null>(null);
 
   const toggleMenu = () => setIsOpen((v) => !v);
   const toggleLang = () => setLangOpen((v) => !v);
@@ -34,13 +45,25 @@ export default function Header({ basePath = "", content }: HeaderProps) {
     typeof window !== "undefined" ? window.location.hash : "";
 
   const switchToGerman = () => {
-    const hash = getHash();
-    window.location.href = `/de${hash || ""}`;
+    window.location.href = "/de";
   };
   const switchToFrench = () => {
-    const hash = getHash();
-    window.location.href = `/${hash || ""}`;
+    window.location.href = "/";
   };
+  const switchToEnglish = () => {
+    window.location.href = "/en";
+  };
+
+  // Gestion du hover avec délai pour le dropdown
+  const openSolutions = () => {
+    if (solutionsTimeout[0]) clearTimeout(solutionsTimeout[0]);
+    setSolutionsOpen(true);
+  };
+  const closeSolutions = () => {
+    solutionsTimeout[0] = setTimeout(() => setSolutionsOpen(false), 150);
+  };
+
+  const solutionsNav = content.nav.find((item) => item.href === "#solutions");
 
   return (
     <header className="w-full bg-white h-28 px-8 flex items-center justify-between relative z-50 shadow-sm">
@@ -54,17 +77,54 @@ export default function Header({ basePath = "", content }: HeaderProps) {
       </Link>
 
       {/* ========================== Menu Desktop ========================== */}
-      <nav className="hidden lg:flex items-center gap-6 text-base font-semibold text-black">
-        {content.nav.map(({ href, label }) => (
-          <Link key={href} href={`${basePath}${href}`}>
-            <span className="relative group">
+      <nav className="hidden lg:flex items-center gap-8 text-lg font-bold text-black">
+        {content.nav.map((item) =>
+          item.dropdown ? (
+            <div
+              key={item.href}
+              className="relative"
+              onMouseEnter={openSolutions}
+              onMouseLeave={closeSolutions}
+            >
+              <button
+                className="relative group px-4 py-2 flex items-center gap-2 transition-colors tracking-wide"
+                onClick={() => setSolutionsOpen((v) => !v)}
+              >
+                <span className="transition-colors duration-300">{item.label}</span>
+                <FiChevronDown
+                  className={`transition-transform duration-200 ${solutionsOpen ? "rotate-180" : ""}`}
+                  size={22}
+                />
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
+              </button>
+              {solutionsOpen && (
+                <div
+                  className="absolute left-0 mt-2 w-64 bg-white border rounded shadow-lg z-50 flex flex-col"
+                  onMouseEnter={openSolutions}
+                  onMouseLeave={closeSolutions}
+                >
+                  {item.dropdown.map(({ href, label }) => (
+                    <a
+                      key={href}
+                      href={href}
+                      className="relative group px-4 py-3 text-base font-semibold transition-colors tracking-wide"
+                    >
+                      <span className="transition-colors duration-300">{label}</span>
+                      <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link key={item.href} href={`${basePath}${item.href}`} className="relative group px-2 py-2 tracking-wide">
               <span className="text-black group-hover:text-black transition-colors duration-300">
-                {label}
+                {item.label}
               </span>
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
-            </span>
-          </Link>
-        ))}
+            </Link>
+          )
+        )}
       </nav>
 
       {/* ========================== Zone droite Desktop ========================== */}
@@ -73,7 +133,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
           href={content.login.href}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-2 text-black font-semibold hover:opacity-80"
+          className="flex items-center gap-2 text-black font-bold text-lg px-2 py-2 tracking-wide hover:opacity-80"
         >
           <FiLogIn className="w-6 h-6" />
           {content.login.label}
@@ -84,13 +144,15 @@ export default function Header({ basePath = "", content }: HeaderProps) {
           <button
             onClick={toggleLang}
             title="Langue"
-            className="focus:outline-none"
+            className="focus:outline-none cursor-pointer"
           >
             <img
               src={
                 content.locale === "fr"
                   ? "/photos/french_logo.png"
-                  : "/photos/german_logo.png"
+                  : content.locale === "de"
+                  ? "/photos/german_logo.png"
+                  : "/photos/english_logo.png"
               }
               alt={content.locale.toUpperCase()}
               className="w-6 h-6 rounded-full"
@@ -100,7 +162,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
             <div className="absolute right-0 mt-2 w-36 bg-white border rounded shadow-lg z-50">
               <button
                 onClick={switchToFrench}
-                className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black cursor-pointer"
               >
                 <img
                   src="/photos/french_logo.png"
@@ -111,7 +173,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
               </button>
               <button
                 onClick={switchToGerman}
-                className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black cursor-pointer"
               >
                 <img
                   src="/photos/german_logo.png"
@@ -119,6 +181,17 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                   className="w-5 h-5 rounded-full mr-2"
                 />
                 Deutsch
+              </button>
+              <button
+                onClick={switchToEnglish}
+                className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black cursor-pointer"
+              >
+                <img
+                  src="/photos/english_logo.png"
+                  alt="EN"
+                  className="w-5 h-5 rounded-full mr-2"
+                />
+                English
               </button>
             </div>
           )}
@@ -187,16 +260,48 @@ export default function Header({ basePath = "", content }: HeaderProps) {
             </div>
 
             {/* ========================== Liens Mobile ========================== */}
-            <nav className="flex flex-col gap-4 text-slate-700 font-medium">
-              {content.nav.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={`${basePath}${href}`}
-                  onClick={toggleMenu}
-                >
-                  {label}
-                </Link>
-              ))}
+            <nav className="flex flex-col gap-4 text-lg font-bold text-slate-700 tracking-wide">
+              {content.nav.map((item) =>
+                item.dropdown ? (
+                  <div key={item.href} className="relative">
+                    <button
+                      className="w-full text-left px-2 py-2 flex items-center gap-2 tracking-wide"
+                      onClick={() => setSolutionsMobileOpen((v) => !v)}
+                    >
+                      {item.label}
+                      <FiChevronDown
+                        className={`transition-transform duration-200 ${solutionsMobileOpen ? "rotate-180" : ""}`}
+                        size={20}
+                      />
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${
+                        solutionsMobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+                      } flex flex-col`}
+                    >
+                      {item.dropdown?.map(({ href, label }) => (
+                        <a
+                          key={href}
+                          href={href}
+                          className="px-6 py-3 text-base font-semibold tracking-wide text-slate-700 hover:underline"
+                          onClick={toggleMenu}
+                        >
+                          {label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={`${basePath}${item.href}`}
+                    onClick={toggleMenu}
+                    className="px-2 py-2 tracking-wide"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
             </nav>
 
             {/* ========================== Langues Mobile ========================== */}
@@ -210,7 +315,9 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                   src={
                     content.locale === "fr"
                       ? "/photos/french_logo.png"
-                      : "/photos/german_logo.png"
+                      : content.locale === "de"
+                      ? "/photos/german_logo.png"
+                      : "/photos/english_logo.png"
                   }
                   alt={content.locale.toUpperCase()}
                   className="w-6 h-6 rounded-full"
@@ -220,7 +327,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                 <div className="absolute right-0 mt-2 w-36 bg-white border rounded shadow-lg z-50">
                   <button
                     onClick={switchToFrench}
-                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black cursor-pointer"
                   >
                     <img
                       src="/photos/french_logo.png"
@@ -231,7 +338,7 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                   </button>
                   <button
                     onClick={switchToGerman}
-                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black"
+                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black cursor-pointer"
                   >
                     <img
                       src="/photos/german_logo.png"
@@ -239,6 +346,17 @@ export default function Header({ basePath = "", content }: HeaderProps) {
                       className="w-5 h-5 rounded-full mr-2"
                     />
                     Deutsch
+                  </button>
+                  <button
+                    onClick={switchToEnglish}
+                    className="flex items-center w-full px-3 py-2 hover:bg-gray-100 text-black cursor-pointer"
+                  >
+                    <img
+                      src="/photos/english_logo.png"
+                      alt="EN"
+                      className="w-5 h-5 rounded-full mr-2"
+                    />
+                    English
                   </button>
                 </div>
               )}
