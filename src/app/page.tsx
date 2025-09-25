@@ -30,7 +30,7 @@ export default function Home() {
       />
       <Sensor content={homeFR.sensor} />
       <Features basePath="" content={homeFR.features} />
-      <References content={homeFR.references} />
+      {/* <References content={homeFR.references} /> */}
       <About content={homeFR.about} />
       <Contact content={homeFR.contact} />
       <Footer content={footerFR} />

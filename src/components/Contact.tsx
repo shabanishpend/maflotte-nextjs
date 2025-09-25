@@ -257,6 +257,7 @@ export default function Contact({ content }: { content: ContactContent }) {
               lng={content.map.lng}
               title={content.map.title}
               zoom={content.map.zoom ?? 15}
+              apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
             />
           </div>
         </div>

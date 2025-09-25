@@ -29,7 +29,7 @@ export default function HomeDE() {
       />
       <Sensor content={homeDE.sensor} />
       <Features basePath="/de" content={homeDE.features} />
-      <References content={homeDE.references} />
+      {/* <References content={homeDE.references} /> */}
       <About content={homeDE.about} />
       <Contact content={homeDE.contact} />
       <Footer content={footerDE} />

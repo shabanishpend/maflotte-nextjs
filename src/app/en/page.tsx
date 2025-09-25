@@ -29,7 +29,7 @@ export default function HomeEN() {
       />
       <Sensor content={homeEN.sensor} />
       <Features basePath="/en" content={homeEN.features} />
-      <References content={homeEN.references} />
+      {/* <References content={homeEN.references} /> */}
       <About content={homeEN.about} />
       <Contact content={homeEN.contact} />
       <Footer content={footerEN} />
